@@ -5,7 +5,7 @@ import (
 	"os"
 	"fmt"
 
-	"model/task"
+	"../model"
 )
 
 var filepath string

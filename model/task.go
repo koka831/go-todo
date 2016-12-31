@@ -19,7 +19,7 @@ type TaskManager struct {
 	id	int
 }
 
-func Add(task string, deadline int) (*Task, err) {
+func Add(task string, deadline int) (*Task, error) {
 	if task == "" {
 		return nil, fmt.Errorf("cannot create task with empty title")
 	}
@@ -31,6 +31,35 @@ func (manager *TaskManager) Save(task *Task) error {
 		manager.id ++
 		task.id = manager.id
 		manager.tasks = append(manager.tasks, task)
+		return nil
 	}
+
+	for i, t := range manager.tasks {
+		if t.id == task.id {
+			manager.tasks[i] = clone(task)
+			return nil
+		}
+	}
+	return fmt.Errorf("may conflict happens in configfile")
+	
 }
+
+func (manager *TaskManager) Delete(id int) error {
+	if len(manager.tasks) < id {
+		return fmt.Errorf("cannot find the task")
+	}
+
+}
+
+func (manager *TaskManager) List() []*Task {
+	return manager.tasks
+}
+
+//保存時にスライスを再構成
+func clone(task *Task) *Task {
+	c := *task
+	return &c
+}
+
+
 
