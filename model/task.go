@@ -4,6 +4,8 @@ import (
 	"fmt"
 )
 
+// Task[]todo <-> csv <-> file
+
 // deadline : the day left
 // input: int -> save: int->Date
 type Task struct {
@@ -19,7 +21,7 @@ type TaskManager struct {
 	id	int
 }
 
-func Add(task string, deadline int) (*Task, error) {
+func NewTask(task string, deadline int) (*Task, error) {
 	if task == "" {
 		return nil, fmt.Errorf("cannot create task with empty title")
 	}
@@ -48,14 +50,15 @@ func (manager *TaskManager) Delete(id int) error {
 	if len(manager.tasks) < id {
 		return fmt.Errorf("cannot find the task")
 	}
-
+	// TODO: write
+	return nil
 }
 
 func (manager *TaskManager) List() []*Task {
 	return manager.tasks
 }
 
-//保存時にスライスを再構成
+// reconstruct slices at save
 func clone(task *Task) *Task {
 	c := *task
 	return &c

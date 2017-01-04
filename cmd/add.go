@@ -3,7 +3,7 @@ package cmd
 import (
 	"fmt"
 	"github.com/spf13/cobra"
-	"../model"
+	"github.com/koka831/go-todo/model"
 )
 
 init() {

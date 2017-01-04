@@ -3,8 +3,7 @@ package main
 import (
 	"fmt"
 	"os"
-
-	"./cmd"
+	"github.com/koka831/go-todo/cmd"
 )
 
 func main() {

@@ -5,10 +5,10 @@ import (
 	"os"
 	"fmt"
 
-	"../model"
+	"github.com/koka831/go-todo/model"
 )
 
-var filepath string
+var filepath string := "~/todo-go.json"
 
 var RootCmd = &cobra.Command{
 	Use:   "todo",
